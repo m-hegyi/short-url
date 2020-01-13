@@ -1,0 +1,20 @@
+CREATE TABLE `short_urls` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `short_url` VARCHAR(32) NOT NULL,
+    `original_url` VARCHAR(256) NOT NULL,
+    `is_deleted` TINYINT(1) NOT NULL DEFAULT 0,
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)ENGINE=InnoDb;
+
+ALTER TABLE `short_urls` ADD INDEX (`short_url`);
+
+CREATE TABLE `users` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(64) NOT NULL,
+    `password` VARCHAR(128) NOT NULL,
+    `is_deleted` TINYINT(1) NOT NULL DEFAULT 0,
+    `last_login` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `created_at` DATETIME NOT NULL
+)ENGINE=InnoDb;
+
+ALTER TABLE `users` ADD INDEX (`name`);
